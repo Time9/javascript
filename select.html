@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>j</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<select name="select" onfocus="selectFocus()" id="select">
+		<option onclick="selectClick()">我是老客户</option>
+		<option onclick="selectClick()">电视广告</option>
+		<option onclick="selectClick()">互联网</option>
+		<option onclick="selectClick()">口碑</option>
+		<option onclick="selectClick()">我是老客户</option>
+		<option onclick="selectClick()">电视广告</option>
+		<option onclick="selectClick()">互联网</option>
+		<option onclick="selectClick()">口碑</option>
+		<option onclick="selectClick()">我是老客户</option>
+		<option onclick="selectClick()">电视广告</option>
+		<option onclick="selectClick()">互联网</option>
+		<option onclick="selectClick()">口碑</option>
+	</select>
+
+</body>
+<script type="text/javascript">
+			function selectFocus(){
+				
+				document.getElementById('select').setAttribute("size","5");
+				console.log(select);
+			}
+			function selectClick(){
+				document.getElementById('select').removeAttribute("size");
+				console.log(select);
+				document.getElementById('select').blur();
+				
+			}
+		</script>
+</html>
