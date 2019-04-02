@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>百度换肤</title>
+	<meta charset="utf-8">
+</head>
+<style type="text/css">
+	*{
+		padding: 0;
+		margin:0;
+		list-style: none;
+		vertical-align: top;
+	}
+	body{
+		background: url("img/1.jpg") no-repeat;
+		background-size: cover;
+	}
+	#box{
+		background-color: rabg(255,255,255,.5);	
+	}
+	#box ul{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		cursor: pointer;
+	}
+	#box ul li img{
+		width: 180px;
+		height: 120px;
+		margin:auto 0;
+	}
+
+</style>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="img/1.jpg"></li>
+			<li><img src="img/2.jpg"></li>
+			<li><img src="img/3.jpg"></li>
+			<li><img src="img/4.jpg"></li>
+			<li><img src="img/5.jpg"></li>
+		</ul>
+	</div>
+<script type="text/javascript">
+window.onload = function(){
+	//获取标签
+	var allLis = document.getElementsByTagName('li');
+	//为每个Li绑定事件
+	for(var i=0; i<allLis.length;i++){
+		(function(i) {
+			allLis[i].onclick = function(){
+				j=i+1;
+			document.body.style.background = 'url("img/'+j+'.jpg") no-repeat';
+			document.body.style.backgroundSize ='cover';
+			};
+		})(i);
+		
+
+	}
+}
+</script>
+
+</body>
+</html>
