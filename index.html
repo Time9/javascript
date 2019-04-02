@@ -1,64 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>百度换肤</title>
-	<meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>简易评论</title>
 </head>
-<style type="text/css">
-	*{
-		padding: 0;
-		margin:0;
-		list-style: none;
-		vertical-align: top;
-	}
-	body{
-		background: url("img/1.jpg") no-repeat;
-		background-size: cover;
-	}
-	#box{
-		background-color: rabg(255,255,255,.5);	
-	}
-	#box ul{
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		cursor: pointer;
-	}
-	#box ul li img{
-		width: 180px;
-		height: 120px;
-		margin:auto 0;
-	}
-
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+    #box{
+        width: 800px;
+        border:1px solid #ccc;
+        margin:100px auto;
+        padding:20px;
+    }
+    #my_textarea{
+        height: 200px;
+        width: 801px;
+    }
+    #btn{
+        width: 40px;
+    }
+    #top_box{
+        margin-bottom:20px;
+    }
+    #ul{
+        margin:0 40px;
+    }
+    #ul li{
+        border-bottom: 1px dashed #ccc;
+        color: red;
+        line-height: 44px;
+    }
+    #ul li a{
+        float: right;
+    }
 </style>
 <body>
-	<div id="box">
-		<ul>
-			<li><img src="img/1.jpg"></li>
-			<li><img src="img/2.jpg"></li>
-			<li><img src="img/3.jpg"></li>
-			<li><img src="img/4.jpg"></li>
-			<li><img src="img/5.jpg"></li>
-		</ul>
-	</div>
-<script type="text/javascript">
-window.onload = function(){
-	//获取标签
-	var allLis = document.getElementsByTagName('li');
-	//为每个Li绑定事件
-	for(var i=0; i<allLis.length;i++){
-		(function(i) {
-			allLis[i].onclick = function(){
-				j=i+1;
-			document.body.style.background = 'url("img/'+j+'.jpg") no-repeat';
-			document.body.style.backgroundSize ='cover';
-			};
-		})(i);
-		
+    <div id="box">
+        <div id="top_box">
+            <lable>发表评论：</lable>
+            <textarea id="my_textarea" cols="60" rows="10"></textarea>
+            <button id="btn">发表</button>
+        </div>
+        <ul id="ul">
 
-	}
-}
-</script>
+        </ul>
+    </div>
 
+    <script>
+        window.onload = function () {
+           $('btn').onclick = function () {
+               //alert("sjdj");
+               var content = $('my_textarea').value;
+               //如果输入内容为空，提示用户
+               if(content == ""){
+                   alert("您输入的内容为空");
+                   return;
+               }
+               //动态的创建li
+               var li = document.createElement('li');
+              //给LI赋值
+               li.innerHTML = content + '<a href="javascript:;">删除</a>'
+               //$('ul').appendChild(li);
+
+               $('ul').insertBefore(li, $('ul').children[0]);
+
+               $('my_textarea').value = '';
+
+               //删除评论
+               var as = $('ul').getElementsByTagName('a');
+               //遍历绑定事件
+               for(var i = 0; i<as.length; i++){
+                   var a = as[i];
+                   as[i].onclick = function () {
+                      this.parentNode.remove();
+                   }
+               }
+           }
+        };
+        function $(id) {
+            return typeof id === "string" ? document.getElementById(id) : null ;
+        }
+    </script>
 </body>
 </html>
+
+
